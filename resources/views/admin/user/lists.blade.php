@@ -48,7 +48,8 @@
      </tfoot>-->
        <tfoot align="right">
        <tr>
-           <th colspan="6" style="justify-content: right;">Pagination Link</th>
+            <th colspan="6" style="justify-content: right;">{{ $mods->links('vendor.pagination.bootstrap-4') }}</th>
+
        </tr>
        </tfoot>
 
@@ -91,6 +92,7 @@
              @endif
 
        </tbody>
+       
      </table>
    </div>
  </div>

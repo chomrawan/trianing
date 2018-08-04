@@ -55,7 +55,7 @@ class UsersController extends Controller
         //     'item' => $item
         // ];
 
-        // return view('test', $results);
+        // return view('test', $results); หน้าละเท่าไรpaginate(10)
         $mods = UserMod::paginate(10);
     return view('admin.user.lists', compact('mods') );
 
