@@ -53,7 +53,13 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);exit;
+        $mod = new UserMod;
+        $mod->name = $request->name;
+        $mod->email = $request->email;
+        $mod->password = bcrypt($request->password);
+        $mod->save();
+
     }
 
     /**
@@ -90,7 +96,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $mod = UserMod::find($id);
+        $mod->name = $request->name;
+        $mod->email = $request->email;
+        $mod->password = bcrypt($request->password);
+        $mod->save();
     }
 
     /**
@@ -101,6 +111,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mod = UserMod::find($id);
+        $mod->delete();
+        echo "delete Success";
+
     }
 }
