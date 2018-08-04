@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\User as UserMod;
-
+use App\Model\Shop as ShopMod;
+use App\Model\Product as ProductMod;
 
 class UsersController extends Controller
 {
@@ -31,9 +32,44 @@ class UsersController extends Controller
         //   echo $item->name . " " .$item->surname ." ".$item->email .  "<br>";
         // }
        // return "Hello";
-        $count = UserMod::where('active', 1)->count();
-        echo "count : " . $count;
+        // $count = UserMod::where('active', 1)->count();
+        // echo "count : " . $count;
+
+        // return view("test")
+        //         ->with('name', 'Chomrawan')
+        //         ->with('email', 'Chomrawan@gmail.com');
+
+        //   $data = [
+        //     'name' => 'My Name',
+        //     'surname' => 'My SurName',
+        //     'email' => 'myemail@gmail.com'
+        // ];
+
+        // $item = [
+        //     'item1' => 'My Value1',
+        //     'item2' => 'My Value2'
+        // ];
+
+        // $results = [
+        //     'data' => $data,
+        //     'item' => $item
+        // ];
+
+        // return view('test', $results);
+        $data = [
+           'name' => 'My Name',
+           'surname' => 'My SurName',
+           'email' => 'myemail@gmail.com'
+       ];
+
+        $user = UserMod::find(1);
+        $mods = UserMod::all();
+
+        return view('test', compact('data', 'user', 'mods'));
+
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -70,9 +106,37 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        /*$mod = UserMod::find($id);
+        echo $mod->name." ".$mod->surname. " => is owner Shop : ". $mod->shop->name;
+        echo "<br>";
+       
+        $shop = UserMod::find($id)->shop;
+        echo $shop->name;*/
 
-        $mod = UserMod::find($id);
-        echo $mod->name . "<br>";
+        // $mod = ShopMod::find($id);
+        // echo $mod->name;
+
+        // echo "<br>";
+        // echo $mod->user->name;
+
+        /*$products = ShopMod::find($id)->products;
+ 
+        foreach ($products as $product) {
+            echo $product->name;
+            echo "<br>";
+        }
+
+       echo "OR <br>";
+        $shop = ShopMod::find($id);
+        foreach ($shop->products as $product) {
+            echo $product->name;
+            echo "<br>";
+        }*/
+        // $product = ProductMod::find($id);
+        // echo "Product Name is : " .$product->name;
+        // echo "<br>";
+        // echo "Shop owner is : " .$product->shop->name;
+        return view("test");
     }
 
     /**
