@@ -27,7 +27,7 @@ class UsersController extends Controller
     //            ->orderBy('name', 'desc')
     //         //   ->take(10)
     //            ->get();
-        // $mods = UserMod::find([1, 2, 3,5]);
+        // ฉ
         // foreach ($mods as $item) {
         //   echo $item->name . " " .$item->surname ." ".$item->email .  "<br>";
         // }
@@ -56,16 +56,9 @@ class UsersController extends Controller
         // ];
 
         // return view('test', $results);
-        $data = [
-           'name' => 'My Name',
-           'surname' => 'My SurName',
-           'email' => 'myemail@gmail.com'
-       ];
+        $mods = UserMod::paginate(10);
+    return view('admin.user.lists', compact('mods') );
 
-        $user = UserMod::find(1);
-        $mods = UserMod::all();
-
-        return view('test', compact('data', 'user', 'mods'));
 
 
     }
