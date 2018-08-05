@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('desc');
             $table->integer('status')->default(1);
             $table->timestamps();
+            
 
         });
     }

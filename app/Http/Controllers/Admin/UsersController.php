@@ -18,48 +18,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-         // $mods = UserMod::all();
-         // foreach ($mods as $item) {
-         // echo $item->name . " " .$item->surname ." ".$item->email .  "<br>";
-         // }
-    // $mods = UserMod::where('active', 1)
-    //            ->where("city","Bangkok")
-    //            ->orderBy('name', 'desc')
-    //         //   ->take(10)
-    //            ->get();
-        // ฉ
-        // foreach ($mods as $item) {
-        //   echo $item->name . " " .$item->surname ." ".$item->email .  "<br>";
-        // }
-       // return "Hello";
-        // $count = UserMod::where('active', 1)->count();
-        // echo "count : " . $count;
-
-        // return view("test")
-        //         ->with('name', 'Chomrawan')
-        //         ->with('email', 'Chomrawan@gmail.com');
-
-        //   $data = [
-        //     'name' => 'My Name',
-        //     'surname' => 'My SurName',
-        //     'email' => 'myemail@gmail.com'
-        // ];
-
-        // $item = [
-        //     'item1' => 'My Value1',
-        //     'item2' => 'My Value2'
-        // ];
-
-        // $results = [
-        //     'data' => $data,
-        //     'item' => $item
-        // ];
-
-        // return view('test', $results); หน้าละเท่าไรpaginate(10)
+     
         $mods = UserMod::orderBy('id','desc')->paginate(20);
     return view('admin.user.lists', compact('mods') );
-
-
 
     }
 
@@ -192,6 +153,7 @@ class UsersController extends Controller
         $mod = UserMod::find($id);
         $mod->name     = $request->name;
         $mod->surname  = $request->surname;
+        $mod->password  =bcrypt($request->password);
         //$mod->email    = $request->email;
         $mod->mobile   = $request->mobile;
         $mod->surname  = $request->surname;
