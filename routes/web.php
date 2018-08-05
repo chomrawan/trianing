@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('foo', function () {
     return 'Hello World';
 });
-Route::get('demoone', 'DemoController@index');
+
 
 Route::post('demotwo', 'DemoController@demotwo');
 
@@ -45,6 +45,10 @@ Route::get('demoseven/{id}', function ($id) {
 
 Route::resource('photos', 'PhotoController');
 
-Route::resource('admin/users', 'Admin\UsersController');
+Route::prefix('admin')->group(function () {
+	Route::get('demoone', 'DemoController@index');
+	Route::resource('users', 'Admin\UsersController');
+});
+
 
 
